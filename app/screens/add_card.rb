@@ -40,8 +40,7 @@ class AddCard < PM::FormotionScreen
           type: :text,
           placeholder: "Enter your Content here...",
           row_height: 100
-        },
-         {
+        },{
           title: "Photo",
           key: :photo,
           type: :image,

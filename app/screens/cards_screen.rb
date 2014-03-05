@@ -1,9 +1,10 @@
 class CardsScreen < PM::Screen
   attr_accessor :cards_id
+  include CardStyles
 
   def on_load
     set_nav_bar_button :right, title: "Edit", action: :open_edit_cards
-    add Card.new
+    add Card.new, :global_label_style
   end
 
   def view_did_load
@@ -17,7 +18,7 @@ class CardsScreen < PM::Screen
 
   def will_appear
     set_attributes self.view, {
-      background_color: hex_color("#FFFFFF")
+      background_color: hex_color("FF6666")
     }
 
     @label.text = app_delegate.cards[self.cards_id][:bio]

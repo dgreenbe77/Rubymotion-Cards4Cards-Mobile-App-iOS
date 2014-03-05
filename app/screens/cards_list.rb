@@ -1,4 +1,5 @@
 class CardsList < PM::TableScreen
+  include CardStyles
   title "Cards List"
 
   searchable placeholder: "Find a Card"
@@ -9,6 +10,7 @@ class CardsList < PM::TableScreen
               updated_time_format: "%l:%M %p"
 
   def on_load
+    set_attributes self.view, :main_view_style
     button =  UIButton.buttonWithType(UIButtonTypeCustom)
     button.setImage(UIImage.imageNamed("guide"), forState:UIControlStateNormal)
     button.addTarget(self, action: :open_guide, forControlEvents:UIControlEventTouchUpInside)
@@ -19,9 +21,9 @@ class CardsList < PM::TableScreen
 
   def will_appear
     update_table_data
-    set_attributes self.view, {
-      background_color: hex_color("#FFFFFF")
-    }
+    # set_attributes self.view, {
+    #   background_color: hex_color("#FFFFFF")
+    # }
   end
 
   def open_guide
